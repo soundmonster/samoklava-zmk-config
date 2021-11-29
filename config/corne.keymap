@@ -19,7 +19,7 @@
 
 &mt {
     flavor = "tap-preferred";
-    tapping-term-ms = <220>;
+    tapping-term-ms = <250>;
     quick_tap_ms = <180>;
 };
 
@@ -28,8 +28,6 @@
     quick_tap_ms = <200>;
     tapping-term-ms = <180>;
 };
-
-// TODO paren combos
 
 / {
         combos {
@@ -85,8 +83,8 @@
                 adjust_layer {
                         bindings = <
    &none &bt BT_CLR   &none        &none        &none        &none            &none           &kp K_MUTE   &none &none &bootloader &none
-   &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4     &kp PAUSE_BREAK &kp C_VOL_UP &none &none &reset      &none
-   &none &none        &none        &none        &none        &none            &kp UNDER       &kp C_VOL_DN &none &none &none       &none
+   &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4     &kp C_BRI_UP    &kp C_VOL_UP &none &none &reset      &none
+   &none &none        &none        &none        &none        &none            &kp C_BRI_DN    &kp C_VOL_DN &none &none &none       &none
                                    &none        &none        &none            &none           &none        &none
                         >;
                 };
