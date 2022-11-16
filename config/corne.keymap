@@ -18,18 +18,40 @@
 #define ADJ ADJUST
 
 &mt {
-    flavor = "tap-preferred";
+    quick-tap-ms = <180>;
     tapping-term-ms = <250>;
-    quick_tap_ms = <180>;
 };
 
 &lt {
-    /* flavor = "balanced"; */
     quick_tap_ms = <200>;
     tapping-term-ms = <180>;
 };
 
 / {
+        behaviors {
+            hml: homerow_mods_left {
+                compatible = "zmk,behavior-hold-tap";
+                label = "HOMEROW_MODS_LEFT";
+                #binding-cells = <2>;
+                flavor = "tap-preferred";
+                tapping-term-ms = <250>;
+                quick-tap-ms = <180>;
+                bindings = <&kp>, <&kp>;
+                hold-trigger-key-positions = <7 8 9 10 11 12 19 20 21 22 23 24 31 32 33 34 35 36 37 38 39 40 41 42>;    // <---[[right-hand keys]]
+            };
+
+            hmr: homerow_mods_right {
+                compatible = "zmk,behavior-hold-tap";
+                label = "HOMEROW_MODS_RIGHT";
+                #binding-cells = <2>;
+                flavor = "tap-preferred";
+                tapping-term-ms = <250>;
+                quick-tap-ms = <180>;
+                bindings = <&kp>, <&kp>;
+                hold-trigger-key-positions = <1 2 3 4 5 6 13 14 15 16 17 18 25 26 27 28 29 30 37 38 39 40 41 42>;    // <---[[left-hand keys]]
+            };
+        };
+
         combos {
            compatible = "zmk,combos";
            combo_lpar {
@@ -58,34 +80,34 @@
 
                 default_layer {
                         bindings = <
-   &none &kp Q      &kp W      &kp E       &kp R        &kp T         &kp Y         &kp U        &kp I        &kp O      &kp P         &none
-   &none &mt LCMD A &mt RALT S &mt LCTRL D &mt LSHFT F  &kp G         &kp H         &mt RSHFT J  &mt RCTRL K  &mt RALT L &mt RCMD SEMI &none
-   &none &kp Z      &mt LALT X &kp C       &kp V        &kp B         &kp N         &kp M        &kp COMMA    &kp DOT    &kp FSLH      &none
-                               &lt RSE ESC &lt LWR QUOT &kp SPACE     &mt RSHFT RET &lt RSE BSPC &lt LWR TAB
+   &none &kp Q        &kp W         &kp E        &kp R         &kp T             &kp Y         &kp U            &kp I           &kp O            &kp P          &none
+   &none &hml LCMD A  &hml RALT S   &hml LCTRL D &hml LSHFT F  &kp G             &kp H         &hmr RSHFT J     &hmr RCTRL K    &hmr RALT L      &hmr RCMD SEMI &none
+   &none &kp Z        &hml LALT X   &kp C        &kp V         &kp B             &kp N         &kp M            &kp COMMA       &hmr LALT DOT    &kp FSLH       &none
+                                    &lt RSE ESC  &lt LWR QUOT  &kp SPACE         &mt RSHFT RET &lt RSE BSPC     &lt LWR TAB
                         >;
                 };
                 lower_layer {
                         bindings = <
-   &none &kp N1   &kp N2   &kp N3      &kp N4       &kp N5        &kp N6   &kp N7         &kp N8       &kp N9         &kp N0     &none
-   &none &kp LCMD &kp RALT &kp LCTRL   &kp LSHFT    &none         &kp LEFT &mt RSHFT DOWN &mt RCTRL UP &mt RALT RIGHT &kp RCMD   &none
-   &none &none    &kp LALT &none       &kp Y        &none         &kp HOME &kp PG_DN      &kp PG_UP    &mt LALT END   &caps_word &none
-                           &lt RSE ESC &lt LWR QUOT &kp SPACE     &mt RSHFT RET &mo RSE &lt LWR TAB
+   &none &kp N1       &kp N2       &kp N3        &kp N4        &kp N5            &kp N6        &kp N7           &kp N8           &kp N9          &kp N0         &none
+   &none &kp LCMD     &kp RALT     &kp LCTRL     &kp LSHFT     &none             &kp LEFT      &hmr RSHFT DOWN  &hmr RCTRL UP    &hmr RALT RIGHT &kp RCMD       &none
+   &none &none        &kp LALT     &none         &kp Y         &none             &kp HOME      &kp PG_DN        &kp PG_UP        &hmr LALT END   &caps_word     &none
+                                   &lt RSE ESC   &lt LWR QUOT  &kp SPACE         &mt RSHFT RET &mo RSE          &lt LWR TAB
                         >;
                 };
                 raise_layer {
                         bindings = <
-   &none &kp EXCL    &kp AT      &kp HASH     &kp DLLR     &kp PRCNT       &kp CARET     &kp AMPS        &kp KP_MULTIPLY &kp LPAR      &kp RPAR      &none
-   &none &mt LCMD F1 &mt RALT F2 &mt LCTRL F3 &mt LSHFT F4 &kp F5          &kp MINUS     &mt RSHFT EQUAL &mt RCTRL LBKT  &mt RALT RBKT &mt RCMD BSLH &none
-   &none &kp F6      &mt LALT F7 &kp F8       &kp F9       &kp F10         &kp UNDER     &kp PLUS        &kp LBRC        &kp RBRC      &kp PIPE      &none
-                                 &lt RSE ESC  &mo LWR      &kp GRAVE       &mt RSHFT RET &lt RSE BSPC    &lt LWR TAB
+   &none &kp EXCL     &kp AT       &kp HASH      &kp DLLR      &kp PRCNT         &kp CARET     &kp AMPS         &kp KP_MULTIPLY  &kp LPAR        &kp RPAR       &none
+   &none &hml LCMD F1 &hml RALT F2 &hml LCTRL F3 &hml LSHFT F4 &kp F5            &kp MINUS     &hmr RSHFT EQUAL &hmr RCTRL LBKT  &hmr RALT RBKT  &hmr RCMD BSLH &none
+   &none &kp F6       &hml LALT F7 &kp F8        &kp F9        &kp F10           &kp UNDER     &kp PLUS         &kp LBRC         &kp RBRC        &kp PIPE       &none
+                                   &lt RSE ESC   &mo LWR       &kp GRAVE         &mt RSHFT RET &lt RSE BSPC     &lt LWR TAB
                         >;
                 };
                 adjust_layer {
                         bindings = <
-   &none &bt BT_CLR   &none        &none        &none        &none            &none           &kp K_MUTE   &none &none &bootloader &none
-   &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4     &kp C_BRI_UP    &kp C_VOL_UP &none &none &reset      &none
-   &none &none        &none        &none        &none        &none            &kp C_BRI_DN    &kp C_VOL_DN &none &none &none       &none
-                                   &none        &none        &none            &none           &none        &none
+   &none &bt BT_CLR   &none        &none         &none         &none             &none         &kp K_MUTE       &none            &none           &bootloader    &none
+   &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4      &kp C_BRI_UP  &kp C_VOL_UP     &none            &none           &reset         &none
+   &none &none        &none        &none         &none         &none             &kp C_BRI_DN  &kp C_VOL_DN     &none            &none           &none          &none
+                                   &none         &none         &none             &none         &none            &none
                         >;
                 };
         };
