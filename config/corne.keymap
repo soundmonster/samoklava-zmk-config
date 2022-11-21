@@ -48,7 +48,7 @@
                        13 14 15 16      18 19 20 21 22
                           26            30 31 32 33 34
                              36 37 38   39 40 41
-                    >;    // <---[[right-hand keys + left homerow mods + all thumbs]]
+                    >;    // <---[[right-hand keys + all homerow mods + all thumbs]]
             };
 
             hmr: homerow_mods_right {
@@ -64,7 +64,7 @@
                        13 14 15 16 17      19 20 21 22
                        25 26 27 28 29            33
                              36 37 38   39 40 41
-                    >;    // <---[[left-hand keys + left homerow mods + all thumbs]]
+                    >;    // <---[[left-hand keys + all homerow mods + all thumbs]]
             };
         };
 
